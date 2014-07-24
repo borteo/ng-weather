@@ -1,0 +1,11 @@
+{
+  "name": "ng-weather",
+  "version": "0.0.1",
+  "homepage": "https://github.com/borteo/ng-weather",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "html5-boilerplate": "~4.3.0"
+  }
+}
