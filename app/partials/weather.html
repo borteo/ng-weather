@@ -1,0 +1,29 @@
+<div>
+  <div ng-class="alert.alertClass" ng-show="alert.show">
+    <p>{{ alert.message }}</p>
+  </div>
+
+  <h2>ng-weather</h2>
+  <p class="city">
+    {{ widget.city.name }} - {{ widget.city.country }}
+  </p>
+
+  <ul>
+    <li ng-repeat="day in widget.list | limitTo:days">
+      <img ng-src="{{ getIcon(day.weather[0].icon) }}">
+      {{ day.weather[0].main }} - {{ day.weather[0].description }}
+      pressure: {{ day.pressure }}
+      humidity: {{ day.humidity }}
+      temp: {{ day.temp.day }} min: {{ day.temp.min }} - max: {{ day.temp.max }}
+    </li>
+  </ul>
+
+  <!--pre>
+    {{ widget | json }}
+  </pre-->
+
+</div>
+
+
+
+

@@ -18,7 +18,7 @@ gulp.task('test', function () {
 
 });
 
-var karmaFirst = {
+var karmaConf = {
   browsers: ['Chrome'],
   frameworks: ['jasmine'],
   files: [
@@ -36,22 +36,12 @@ var karmaCommonConf = {
   ]
 };
 
-
 /**
  * Run test once and exit
  */
-gulp.task('test-first', function( done ) {
-  karma.start(_.assign({}, karmaFirst, {singleRun: true}), done);
+gulp.task('test-temperature', function( done ) {
+  karma.start(_.assign({}, karmaConf, {singleRun: true}), done);
 });
-
-/**
- * Watch for file changes and re-run tests on each change
- */
-// gulp.task('tdd', function( done ) {
-//   karma.start(karmaCommonConf, done);
-// });
-
-// gulp.task('default', ['tdd']);
 
 
 gulp.task('styles', function() {
@@ -65,6 +55,12 @@ gulp.task('pages', function() {
   return gulp.src('app/*.html')
     .pipe(cleanhtml())
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('partials', function() {
+  return gulp.src('app/partials/*.html')
+    .pipe(cleanhtml())
+    .pipe(gulp.dest('dist/partials'));
 });
 
 gulp.task('scripts', function() {
@@ -86,7 +82,9 @@ gulp.task('server', function () {
 gulp.task('watch', ['server'], function () {
   gulp.start('build');
 
-  gulp.watch('app/*.html', ['pages']);
+  gulp.watch('app/**/*.html', ['pages', 'partials']);
+  gulp.watch('app/js/**/*.js', ['scripts']);
+
 
   var server = livereload();
   gulp.watch('dist/**').on('change', function (file) {
