@@ -1,20 +1,28 @@
-<div>
+<div class="ng-weather">
   <div ng-class="alert.alertClass" ng-show="alert.show">
     <p>{{ alert.message }}</p>
   </div>
 
-  <h2>ng-weather</h2>
-  <p class="city">
-    {{ widget.city.name }} - {{ widget.city.country }}
-  </p>
+  <div class="location">
+    <h2>{{ widget.city.name }} ({{ widget.city.country }})</h2>
+  </div>
 
-  <ul>
-    <li ng-repeat="day in widget.list | limitTo:days">
-      <img ng-src="{{ getIcon(day.weather[0].icon) }}">
-      {{ day.weather[0].main }} - {{ day.weather[0].description }}
-      pressure: {{ day.pressure }}
-      humidity: {{ day.humidity }}
-      temp: {{ day.temp.day }} min: {{ day.temp.min }} - max: {{ day.temp.max }}
+  <ul class="days">
+    <li ng-class="{'today': $first == true}" ng-repeat="day in widget.list | limitTo:days">
+      <div class="details">
+        <span class="day">{{ day.dt * 1000 | date:'d' }}</span>
+        <img ng-src="{{ getIcon(day.weather[0].icon) }}">
+        <p class="description" title="{{ day.weather[0].description }}">
+          {{ day.weather[0].main }}
+        </p>
+      </div>
+      <div class="temp">
+        {{ day.temp.day | number : 0 }}&deg;
+      </div>
+      <div class="min-max">
+        {{ day.temp.max | number : 0 }}&deg; <span class="max">max</span>
+        {{ day.temp.min | number : 0 }}&deg; <span class="min">min</span>
+      </div>
     </li>
   </ul>
 

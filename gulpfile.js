@@ -3,7 +3,7 @@
 var gulp       = require('gulp');
 
 var livereload = require('gulp-livereload');
-var csso       = require('gulp-csso');
+var sass       = require('gulp-sass');
 var cleanhtml  = require('gulp-cleanhtml');
 var concat     = require('gulp-concat');
 
@@ -40,15 +40,17 @@ var karmaCommonConf = {
  * Run test once and exit
  */
 gulp.task('test-temperature', function( done ) {
-  karma.start(_.assign({}, karmaConf, {singleRun: true}), done);
+  karma.start( _.assign({}, karmaConf, { singleRun: true } ), done );
 });
 
-
-gulp.task('styles', function() {
-  gulp.src('app/css/**/*.css')
-    .pipe(gulp.dest('dist/css'))
-    .pipe(csso())
-    .pipe(gulp.dest('dist/css/min'));
+gulp.task('styles', function () {
+   return gulp.src('app/css/**/*.scss')
+      .pipe( sass({
+        outputStyle: 'compressed',
+        errLogToConsole: true
+      }))  
+      .pipe(gulp.dest('dist/css'));
+      
 });
 
 gulp.task('pages', function() {
@@ -84,6 +86,7 @@ gulp.task('watch', ['server'], function () {
 
   gulp.watch('app/**/*.html', ['pages', 'partials']);
   gulp.watch('app/js/**/*.js', ['scripts']);
+  gulp.watch('app/css/*.scss', ['styles']);
 
 
   var server = livereload();
