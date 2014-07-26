@@ -1,0 +1,118 @@
+div.ng-weather {
+  background: $widget-bg;
+  border: $widget-border;
+  border-radius: $widget-border-radius;
+  color: $widget-colour;
+  margin: 1em auto 0;
+  width: $widget-width;
+
+  .danger {
+    color: red;
+    padding: 1em 1.8em;
+  }
+
+  .location {
+    background: $widget-header-bg;
+    border-top-left-radius: $widget-border-radius;
+    border-top-right-radius: $widget-border-radius;
+    color: $widget-header-colour;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: .1em;
+    text-align: center;
+  }
+
+  .days {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      background: #F9FAFC;
+      border: $widget-border;
+      display: inline-block;
+      overflow: hidden;
+      width: 25%;
+    }
+
+    .details {
+      display: inline-block;
+      position: relative;
+      text-align: center;
+      width: 22%;
+    }
+    
+    img {
+      height: 100%;
+      width: 100%;
+    }
+    
+    .today {
+      background: #FFF;
+      border: none;
+      display: block;
+      width: 100%;
+    }
+
+    .description {
+      font-size: 1.2em;
+      position: relative;
+      text-align: center;
+      top: 1em;
+      display: none;
+    }
+    .today .description {
+      color: #DBE0E6;
+      display: block;
+      font-size: 1.8em;
+    }
+
+    .day {
+      background: #ceced0;
+      color: white;
+      display: inline-block;
+      font-weight: 700;
+      padding: 0.2em 1em;
+    }
+
+    .today .day {
+      display: none;
+    }
+
+    .min-max {
+      display: inline-block;
+      font-size: 1.2em;
+      line-height: .9em;
+      margin-top: .9em;
+      vertical-align: top;
+      width: 30%;
+    }
+
+    .temp {
+      display: inline-block;
+      font-size: 2.5em;
+      margin-top: .2em;
+      text-align: center;
+      vertical-align: top;
+      width: 48%;
+    }
+
+    .today .temp {
+      color: #DBE0E6;
+      font-size: 12em;
+      font-weight: 300;
+      letter-spacing: -10px;
+      margin: 0;
+    }
+    .today .min-max {
+      color: #DBE0E6;
+      font-size: 4.5em;
+      text-align: center;
+    }
+    .min,
+    .max {
+      font-size: .45em;
+    }
+    
+  }
+
+}

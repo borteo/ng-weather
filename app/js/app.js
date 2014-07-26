@@ -78,9 +78,7 @@ app.directive( 'weatherWidget', [
             }
           );
         };
-
         scope.update();
-
 
       }
     };

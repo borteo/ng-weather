@@ -10,14 +10,6 @@ var concat     = require('gulp-concat');
 var _          = require('lodash');
 var karma      = require('karma').server;
 
-gulp.task('default', function () {
-  gulp.start('build');
-});
-
-gulp.task('test', function () {
-
-});
-
 var karmaConf = {
   browsers: ['Chrome'],
   frameworks: ['jasmine'],
@@ -27,34 +19,24 @@ var karmaConf = {
   ]
 };
 
-var karmaCommonConf = {
-  browsers: ['Chrome'],
-  frameworks: ['jasmine'],
-  files: [
-    'app/**/*.js',
-    'test/**/*.spec.js'
-  ]
-};
-
 /**
  * Run test once and exit
  */
-gulp.task('test-temperature', function( done ) {
+gulp.task('test-converter', function( done ) {
   karma.start( _.assign({}, karmaConf, { singleRun: true } ), done );
 });
 
 gulp.task('styles', function () {
-   return gulp.src('app/css/**/*.scss')
-      .pipe( sass({
-        outputStyle: 'compressed',
-        errLogToConsole: true
-      }))  
-      .pipe(gulp.dest('dist/css'));
-      
+  return gulp.src('app/css/**/*.scss')
+    .pipe( sass({
+      outputStyle: 'compressed',
+      errLogToConsole: true
+    }))  
+    .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('pages', function() {
-  return gulp.src('app/*.html')
+  return gulp.src('app/**/*.html')
     .pipe(cleanhtml())
     .pipe(gulp.dest('dist'));
 });
@@ -68,7 +50,7 @@ gulp.task('partials', function() {
 gulp.task('scripts', function() {
   gulp.src('app/js/**/*.js')
     .pipe(concat('main.js'))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('dist/js/'));
 });
 
 gulp.task('build', ['styles', 'pages', 'scripts']);
@@ -93,4 +75,8 @@ gulp.task('watch', ['server'], function () {
   gulp.watch('dist/**').on('change', function (file) {
     server.changed(file.path);
   });
+});
+
+gulp.task('default', function () {
+  gulp.start('build');
 });
