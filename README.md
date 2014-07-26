@@ -22,8 +22,7 @@ To get you started you can simply clone the ng-weather repository and install th
 You need git to clone the ng-weather repository. You can get it from
 [http://git-scm.com/](http://git-scm.com/).
 
-I also use a number of node.js tools to initialise ng-drawing. You must have node.js and
-its package manager (npm) installed. You can get them from [http://nodejs.org/](http://nodejs.org/).
+I also use a number of node.js tools to initialise ng-weather. You must have node.js and its package manager (npm) installed. You can get them from [http://nodejs.org/](http://nodejs.org/).
 
 ### Clone ng-weather
 
@@ -40,7 +39,7 @@ There are two kinds of dependencies in this project: tools and angular framework
 
 * We get the tools we depend upon via `npm`, the [node package manager](https://www.npmjs.org/).
 * We get the angular code via `bower`, a [client-side code package manager](http://bower.io/).
-* `gulp` concatenates JavaScript, compiles Sass and move html files into dist/ [The streaming build system](http://gulpjs.com/).
+* `gulp` concatenates JavaScript, compiles Sass and move HTML files into dist/ [The streaming build system](http://gulpjs.com/).
 
 
 I have preconfigured `npm` to automatically run `bower` so we can simply do:
@@ -59,7 +58,7 @@ Behind the scenes this will also call `bower install`. You should find that you 
 
 I have preconfigured the project with a simple development web server. 
 
-Firstly we have to compile and move the stylesheets, JavaScripts and HTML files into dist folder:
+Firstly we have to build the application:
 
 ```
 gulp build
@@ -71,7 +70,7 @@ The simplest way to start the server is:
 gulp server
 ```
 
-At this poit your browser will open the localhost (port 9122) page.
+At this poit your browser will open the Web page (localhost -port 9122).
 
 ### Run tasks with gulp
 - Run `gulp watch` for live compiling SCSS and JS
@@ -93,5 +92,18 @@ At this poit your browser will open the localhost (port 9122) page.
 
 Directives are one of the most important components of any AngularJS application. I built a "standalone" directive module which consumes data from a configurable service. This service `weatherService`, calls the openweathermap.org API and returns the JSON with the data requested.
 
+
+### Widget - directive
+
+![](https://dl.dropboxusercontent.com/u/1089758/ng-weather.png)
+
 The widget can be instantiated adding a div with class `weather-widget` in the HTML.
+
+`<div class="weather-widget" unit="celsius" days="5"></div>`
+
+### Attributes
+- unit: `celsius` or `fahrenheit` which shows the temperatures in imperial or metric unit.
+- days: `[1..7]` shows the weather forcast for n-days.
+
+
 
