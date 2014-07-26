@@ -70,27 +70,30 @@ The simplest way to start the server is:
 gulp server
 ```
 
-At this poit your browser will open the Web page (localhost -port 9122).
+At this point your browser will open the Web page (localhost -port 9122).
 
 ### Run tasks with gulp
 - Run `gulp watch` for live compiling SCSS and JS
 - Run `gulp build` for building
 - Run `gulp server` for starting the server
-- Run `gulp test-temperature` for testing the temperatureCoverter
+- Run `gulp test-converter` for testing the temperatureCoverter (first exercise)
 
 ## Directory Layout
 
-    app/                --> all of the files to be used in development
-      css/              --> css files (Sass)
-      js/               --> javascript files
-      partials/         --> AngularJS partials
-
-    test/             	--> test scripts
+    app/          --> all of the files to be used in development
+      css/        --> CSS files (Sass)
+      js/         --> JavaScript files
+      partials/   --> AngularJS partials
+    dist/         --> public folder - minified scripts
+      index.html  --> index page
+    test/         --> test scripts
 
 
 ## Application walkthrough
 
 Directives are one of the most important components of any AngularJS application. I built a "standalone" directive module which consumes data from a configurable service. This service `weatherService`, calls the openweathermap.org API and returns the JSON with the data requested.
+
+weather.html partial visualise the data.
 
 
 ### Widget - directive
@@ -102,8 +105,8 @@ The widget can be instantiated adding a div with class `weather-widget` in the H
 `<div class="weather-widget" unit="celsius" days="5"></div>`
 
 ### Attributes
-- unit: `celsius` or `fahrenheit` which shows the temperatures in imperial or metric unit.
-- days: `[1..7]` shows the weather forcast for n-days.
+- __unit__: `celsius` or `fahrenheit` which shows the temperatures in imperial or metric unit.
+- __days__: `[1..7]` shows the weather forcast for n-days.
 
 
 

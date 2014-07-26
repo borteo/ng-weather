@@ -6,6 +6,7 @@ var livereload = require('gulp-livereload');
 var sass       = require('gulp-sass');
 var cleanhtml  = require('gulp-cleanhtml');
 var concat     = require('gulp-concat');
+var uglify     = require('gulp-uglifyjs');
 
 var _          = require('lodash');
 var karma      = require('karma').server;
@@ -50,6 +51,7 @@ gulp.task('partials', function() {
 gulp.task('scripts', function() {
   gulp.src('app/js/**/*.js')
     .pipe(concat('main.js'))
+    .pipe(uglify())
     .pipe(gulp.dest('dist/js/'));
 });
 
